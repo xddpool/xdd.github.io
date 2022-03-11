@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>谷粒商城项目笔记 | xdd</title><meta name="keywords" content="分布式,微服务项目"><meta name="author" content="xdd"><meta name="copyright" content="xdd"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="谷粒商城项目日记第一天谷粒商城微服务架构  配置聚合环境docker下配置mySqlmysql端口映射和配置挂载 1docker run -p 3306:3306 --name mysql -v &#x2F;mydata&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql\ -v &#x2F;mydata&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql\ -v &#x2F;mydata&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mys">
+<meta property="og:type" content="article">
+<meta property="og:title" content="谷粒商城项目笔记">
+<meta property="og:url" content="http://xddpool.github.io/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="xdd">
+<meta property="og:description" content="谷粒商城项目日记第一天谷粒商城微服务架构  配置聚合环境docker下配置mySqlmysql端口映射和配置挂载 1docker run -p 3306:3306 --name mysql -v &#x2F;mydata&#x2F;mysql&#x2F;log:&#x2F;var&#x2F;log&#x2F;mysql\ -v &#x2F;mydata&#x2F;mysql&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql\ -v &#x2F;mydata&#x2F;mysql&#x2F;conf:&#x2F;etc&#x2F;mys">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2022-02-19T09:03:28.421Z">
+<meta property="article:modified_time" content="2022-02-26T00:45:15.688Z">
+<meta property="article:author" content="xdd">
+<meta property="article:tag" content="分布式">
+<meta property="article:tag" content="微服务项目">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://xddpool.github.io/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '谷粒商城项目笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-26 08:45:15'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="ps://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">xdd</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">谷粒商城项目笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-02-19T09:03:28.421Z" title="发表于 2022-02-19 17:03:28">2022-02-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-02-26T00:45:15.688Z" title="更新于 2022-02-26 08:45:15">2022-02-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AD%A6%E4%B9%A0%E9%A1%B9%E7%9B%AE/">学习项目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="谷粒商城项目笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="谷粒商城项目日记"><a href="#谷粒商城项目日记" class="headerlink" title="谷粒商城项目日记"></a>谷粒商城项目日记</h1><h1 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h1><h2 id="谷粒商城微服务架构"><a href="#谷粒商城微服务架构" class="headerlink" title="谷粒商城微服务架构"></a>谷粒商城微服务架构</h2><p><img src="/../../images/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/image-20220219170649511.png" alt="image-20220219170649511"></p>
+<p><img src="/../../images/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/image-20220219172146490.png" alt="image-20220219172146490"></p>
+<h2 id="配置聚合环境"><a href="#配置聚合环境" class="headerlink" title="配置聚合环境"></a>配置聚合环境</h2><h3 id="docker下配置mySql"><a href="#docker下配置mySql" class="headerlink" title="docker下配置mySql"></a>docker下配置mySql</h3><p><strong>mysql端口映射和配置挂载</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 3306:3306 --name mysql -v /mydata/mysql/<span class="built_in">log</span>:/var/<span class="built_in">log</span>/mysql\ -v /mydata/mysql/data:/var/lib/mysql\ -v /mydata/mysql/conf:/etc/mysql\ -e MYSQL_ROOT_PASSWORD=root\ -d mysql:5.7</span><br></pre></td></tr></table></figure>
+
+
+
+<p>[client] default-character-set=utf8</p>
+<p>[mysql] default-character-set=utf8</p>
+<p>[mysqld]<br> init_connect=’SET collation_connection = utf8_unicode_ci’ init_connect=’SET NAMES utf8’<br> character-set-server=utf8 collation-server=utf8_unicode_ci skip-character-set-client-handshake<br> skip-name-resolve</p>
+<p><strong>进入docker交互模式</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br></pre></td></tr></table></figure>
+
+<p><strong>docker redis配置</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 6379:6379 --name redis -v /mydata/redis/data:/data \ -v /mydata/redis/conf/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-d redis redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>新版redis默认持久化开启状态</p>
+</blockquote>
+<p>连接redis 通过<code>redis-cli</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it redis redis-cli </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="生成新-SSH-密钥"><a href="#生成新-SSH-密钥" class="headerlink" title="生成新 SSH 密钥"></a>生成新 SSH 密钥</h3><ol>
+<li><p>打开 Terminal（终端）。</p>
+</li>
+<li><p>粘贴下面的文本（替换为您的 GitHub 电子邮件地址）。</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t ed25519 -C <span class="string">&quot;781488631@qq.com&quot;</span></span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>注：</strong>如果您使用的是不支持 Ed25519 算法的旧系统，请使用以下命令：</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your_email@example.com&quot;</span></span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>这将以提供的电子邮件地址为标签创建新 SSH 密钥。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Generating public/private algorithm key pair.</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><p>提示您“Enter a file in which to save the key（输入要保存密钥的文件）”时，按 Enter 键。 这将接受默认文件位置。</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter a file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/Users/you/.ssh/id_algorithm): [Press enter]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在提示时输入安全密码。 更多信息请参阅“<a target="_blank" rel="noopener" href="https://docs.github.com/cn/articles/working-with-ssh-key-passphrases">使用 SSH 密钥密码</a>”。</p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter passphrase (empty <span class="keyword">for</span> no passphrase): [Type a passphrase]</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> Enter same passphrase again: [Type passphrase again]</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="创建项目微服务"><a href="#创建项目微服务" class="headerlink" title="创建项目微服务"></a>创建项目微服务</h3><p><strong>谷粒商城拥有</strong></p>
+<p>商品服务, 仓储服务, 订单服务, 优惠券服务, 用户服务</p>
+<p><strong>创建聚合项目</strong></p>
+<ol>
+<li><p>包名 <code>com.atguigu.gulimall.xxx(product/ware/order/coupon/member)</code>,引入web和openfeign包</p>
+</li>
+<li><p>通过<code>renren-fast</code> 和 <code>renrne-generator</code>整合全部环境</p>
+</li>
+<li><p><code>renren-generator</code>逆向生成所有的mapper pojo service contriller 等一系列增删改查基础代码, 通过查看各个层的错误报告, 从<code>renren-fast</code> 选取需要的依赖分别加入 新整合的 <code>gulimall-common</code>公共环境类</p>
+</li>
+<li><p>给每个服务配置 <code>application.yml</code> </p>
+<ul>
+<li>配置内容如下</li>
+</ul>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://192.168.3.7:3306/gulimall_sms</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:8848</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">gulimall-coupon</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mybatis-plus:</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:/mapper/**/*.xml</span></span><br><span class="line">  <span class="attr">global-config:</span></span><br><span class="line">    <span class="attr">db-config:</span></span><br><span class="line">      <span class="attr">id-type:</span> <span class="string">auto</span></span><br><span class="line"></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">7000</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>每个微服务的端口和数据源所对应的数据库名字不一样</strong></p>
+</li>
+</ol>
+<h3 id="整合SpringCloud-Alibaba"><a href="#整合SpringCloud-Alibaba" class="headerlink" title="整合SpringCloud Alibaba"></a>整合SpringCloud Alibaba</h3><p>注入依赖到<code>gilimall-common</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-alibaba-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="分布式组件-SpringCloud-OpenFeign-简单示例"><a href="#分布式组件-SpringCloud-OpenFeign-简单示例" class="headerlink" title="分布式组件-SpringCloud-OpenFeign-简单示例"></a>分布式组件-SpringCloud-OpenFeign-简单示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 想要远程调用别的服务</span></span><br><span class="line"><span class="comment"> *  - 引入open-feign</span></span><br><span class="line"><span class="comment"> *  - 编写接口告诉 SpringCloud  这个接口需要调用远程服务(feign 包)</span></span><br><span class="line"><span class="comment"> *  - 开启远程调用功能</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//gulimall-member 查询 优惠券</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//测试查询优惠券服务-简单示例</span></span><br><span class="line">  <span class="meta">@RequestMapping(&quot;/member/list&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> R <span class="title">membercoupons</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CouponEntity couponEntity = <span class="keyword">new</span> CouponEntity();</span><br><span class="line">    couponEntity.setCouponName(<span class="string">&quot;满100减10&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> R.ok().put(<span class="string">&quot;coupons&quot;</span>, Arrays.asList(couponEntity));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//在gulimall-member中建立feign包,目的是编写接口通知SpringCloud 这个接口需要调用远程服务</span></span><br><span class="line">  <span class="meta">@FeignClient(&quot;gulimall-coupon&quot;)</span><span class="comment">// 通过次注解,通知SprinCloud</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CouponFeignService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/coupon/coupon/member/list&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">membercoupons</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//在gulimall-member中注入想要远程调用feign包中的service</span></span><br><span class="line">   <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CouponFeignService couponFeignService;</span><br><span class="line"></span><br><span class="line"><span class="comment">//包含远程调用的业务流程</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/coupons&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MemberEntity memberEntity = <span class="keyword">new</span> MemberEntity();</span><br><span class="line">        memberEntity.setNickname(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">        R membercoupons = couponFeignService.membercoupons();<span class="comment">//远程调用得到优惠券</span></span><br><span class="line">        Object coupons = membercoupons.get(<span class="string">&quot;coupons&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;member&quot;</span>,memberEntity).put(<span class="string">&quot;coupons&quot;</span>,coupons);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="分布式组件-SpringCloud-Alibaba-Nacos配置中心-简单示例"><a href="#分布式组件-SpringCloud-Alibaba-Nacos配置中心-简单示例" class="headerlink" title="分布式组件-SpringCloud Alibaba-Nacos配置中心-简单示例"></a>分布式组件-SpringCloud Alibaba-Nacos配置中心-简单示例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 如何使用Nacos作为配置中心管理配置</span></span><br><span class="line"><span class="comment"> * 1. 引入依赖</span></span><br><span class="line"><span class="comment"> *         &lt;dependency&gt;</span></span><br><span class="line"><span class="comment"> *             &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span></span><br><span class="line"><span class="comment"> *             &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;/artifactId&gt;</span></span><br><span class="line"><span class="comment"> *         &lt;/dependency&gt;</span></span><br><span class="line"><span class="comment"> * 2. 创建一个bootstrap.properties加入以下配置</span></span><br><span class="line"><span class="comment"> *          spring.application.name=gulimail-coupon</span></span><br><span class="line"><span class="comment"> *          spring.cloud.nacos.config.server-addr=127.0.0.1:8848</span></span><br><span class="line"><span class="comment"> * 3. 给配置中心添加一个数据集(Data Id) gulimall-coupon.properties 默认规则 应用名.properties</span></span><br><span class="line"><span class="comment"> * 4. 给 应用名.properties 添加任何配置</span></span><br><span class="line"><span class="comment"> * 5. 动态获取配置需要的注解</span></span><br><span class="line"><span class="comment"> *          <span class="doctag">@RefreshScope</span>: 动态获取并且刷新配置</span></span><br><span class="line"><span class="comment"> *          <span class="doctag">@Value</span>: ($&#123;配置项的名&#125;): 获取到配置的内容</span></span><br><span class="line"><span class="comment"> *   - 如果配置中心和当前配置文件用了相同的配置,优先使用配置中心的配置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#bootstrap.properties of gilimall-coupon</span></span><br><span class="line"></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">gulimail-coupon</span></span><br><span class="line"><span class="meta">spring.cloud.nacos.config.server-addr</span>=<span class="string">127.0.0.1:8848</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#application.properties of gulimall-coupon</span></span><br><span class="line"><span class="comment">#通过给配置中心添加 应用名.properties 以后配合注解将直接通过nacos配置中心进行更改不用暂停打包</span></span><br><span class="line"><span class="meta">coupon.user.name</span>=<span class="string">zhangsan2</span></span><br><span class="line"><span class="meta">coupon.user.age</span>=<span class="string">19</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过 @RefreshScope 进行自动刷新nacos新增或者修改的配置</span></span><br><span class="line"><span class="meta">@RefreshScope</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;coupon/coupon&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CouponController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CouponService couponService;</span><br><span class="line"><span class="comment">//通过@Value 获取占位符所映射的值</span></span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;coupon.user.name&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@Value(&quot;$&#123;coupon.user.age&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/test&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> R.ok().put(<span class="string">&quot;name&quot;</span>, name).put(<span class="string">&quot;age&quot;</span>, age);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">xdd</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://xddpool.github.io/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/">http://xddpool.github.io/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://xddpool.github.io" target="_blank">xdd</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%A1%B9%E7%9B%AE/">微服务项目</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/03/10/TSR/%E9%9D%A2%E8%AF%95%E9%A2%98/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">面试题总结</div></div></a></div><div class="next-post pull-right"><a href="/2021/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">设计模式</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="ps://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">xdd</div><div class="author-info__description">22</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E9%A1%B9%E7%9B%AE%E6%97%A5%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">谷粒商城项目日记</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E5%A4%A9"><span class="toc-number">2.</span> <span class="toc-text">第一天</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.</span> <span class="toc-text">谷粒商城微服务架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%81%9A%E5%90%88%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text">配置聚合环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#docker%E4%B8%8B%E9%85%8D%E7%BD%AEmySql"><span class="toc-number">2.2.1.</span> <span class="toc-text">docker下配置mySql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E6%96%B0-SSH-%E5%AF%86%E9%92%A5"><span class="toc-number">2.2.2.</span> <span class="toc-text">生成新 SSH 密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.2.3.</span> <span class="toc-text">创建项目微服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E5%90%88SpringCloud-Alibaba"><span class="toc-number">2.2.4.</span> <span class="toc-text">整合SpringCloud Alibaba</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6-SpringCloud-OpenFeign-%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">分布式组件-SpringCloud-OpenFeign-简单示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%84%E4%BB%B6-SpringCloud-Alibaba-Nacos%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83-%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">分布式组件-SpringCloud Alibaba-Nacos配置中心-简单示例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/03/10/TSR/%E9%9D%A2%E8%AF%95%E9%A2%98/" title="面试题总结"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试题总结"/></a><div class="content"><a class="title" href="/2022/03/10/TSR/%E9%9D%A2%E8%AF%95%E9%A2%98/" title="面试题总结">面试题总结</a><time datetime="2022-03-10T11:22:28.132Z" title="发表于 2022-03-10 19:22:28">2022-03-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/" title="谷粒商城项目笔记"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="谷粒商城项目笔记"/></a><div class="content"><a class="title" href="/2022/02/19/GuliMall/%E8%B0%B7%E7%B2%92%E5%95%86%E5%9F%8E%E7%AC%94%E8%AE%B0/" title="谷粒商城项目笔记">谷粒商城项目笔记</a><time datetime="2022-02-19T09:03:28.421Z" title="发表于 2022-02-19 17:03:28">2022-02-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="设计模式"/></a><div class="content"><a class="title" href="/2021/12/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式">设计模式</a><time datetime="2021-12-30T13:20:41.549Z" title="发表于 2021-12-30 21:20:41">2021-12-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/17/LeetCode/%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="数组和字符串"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数组和字符串"/></a><div class="content"><a class="title" href="/2021/12/17/LeetCode/%E6%95%B0%E7%BB%84%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="数组和字符串">数组和字符串</a><time datetime="2021-12-17T06:40:07.751Z" title="发表于 2021-12-17 14:40:07">2021-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/12/16/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="代理模式"/></a><div class="content"><a class="title" href="/2021/12/16/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/" title="代理模式">代理模式</a><time datetime="2021-12-16T10:39:06.603Z" title="发表于 2021-12-16 18:39:06">2021-12-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By xdd</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
